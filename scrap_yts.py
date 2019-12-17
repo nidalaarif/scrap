@@ -1,13 +1,21 @@
-#import mysql.connector
+##import mysql.connector
 import requests
 import html5lib
 from bs4 import BeautifulSoup
-#from pprint import pprint
-from functions import getImage
+##from pprint import pprint
+from functions import getImage, getProxies
 movies = []
-url = "https://yts.lt/browse-movies"
 
-# reauest the webpage
+# get the proxies for ip routing
+p = getProxies(100)
+proxies = []
+
+for item in p:
+    proxies.append(item[0])
+
+
+# request the webpage
+url = "https://yts.lt/browse-movies"
 req = requests.get(url,"lxml")
 soup = BeautifulSoup(req.content,'html5lib')
 
@@ -33,8 +41,5 @@ for figure,title,year in zip(figures,titles,years):
     movie["title"] = title.text
     movie["year"] = year.text
     movie["link"] = title["href"]
-
     
-
-
     movies.append(movie)
