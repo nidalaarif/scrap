@@ -12,6 +12,7 @@ proxies = []
 
 for item in p:
     proxies.append(item[0])
+    
 
 
 # request the webpage
@@ -28,7 +29,7 @@ figures = soup.find_all("figure")
 titles = soup.find_all("a",{"class":"browse-movie-title"})
 years = soup.find_all("div",{"class":"browse-movie-year"})
 
-# loop throught the movies 
+# loop throught the movies, titles and years 
 for figure,title,year in zip(figures,titles,years):
     figcaption = figure.find("figcaption")
     h4_table = figcaption.find_all("h4")
