@@ -1,6 +1,6 @@
-__pycache__
-.idea
-.pytest_cache
-.vscode
-images
+/__pycache__
+/.idea
+/.pytest_cache
+/.vscode
+/images
 http_proxies.txt
